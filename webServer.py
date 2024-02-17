@@ -20,27 +20,20 @@ def webServer(port=13331):
 
             with open(filename[1:], 'r', encoding='utf-8') as f:
                 # Prepare the HTTP response header
-                header = 'HTTP/1.1 200 OK\nContent-Type: text/html; charset=UTF-8\n\n'
-                outputdata = header.encode()
+                outputdata = 'HTTP/1.1 200 OK\nContent-Type: text/html; charset=UTF-8\n\n'.encode()
 
-                # Append file content to the response
                 for i in f:
                     outputdata += i.encode('utf-8')
 
-            # Send the response (header + content)
-            connectionSocket.send(outputdata)
-            connectionSocket.close()
-
         except FileNotFoundError:
-            # Prepare the HTTP response header for 404 Not Found
             header = 'HTTP/1.1 404 Not Found\nContent-Type: text/html; charset=UTF-8\n\n'
-            message = header.encode() + b"<html><body><h1>404 Not Found</h1></body></html>"
-            connectionSocket.send(message)
-            connectionSocket.close()
+            error_message = header + "<html><body><h1>404 Not Found</h1></body></html>"
+            connectionSocket.send(error_message.encode())
 
         except Exception as e:
             print("Error:", e)
-            connectionSocket.close()
+
+        connectionSocket.close()
 
 if __name__ == "__main__":
     webServer(13331)
