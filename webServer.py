@@ -25,14 +25,14 @@ def webServer(port=13331):
         message = connectionSocket.recv(1024).decode()  # Fill in start - a client is sending you a message #Fill in end
         filename = message.split()[1]
 
-        f = open(filename[1:], 'rb')  # fill in start #fill in end
+        f = open(filename[1:], 'r', encoding='utf-8')  # fill in start #fill in end
 
         # Prepare the HTTP response header
         outputdata = 'HTTP/1.1 200 OK\nContent-Type: text/html; charset=UTF-8\n\n'.encode()
 
         # Fill in start - append your html file contents
-        for line in f:
-            outputdata += line
+        for i in f:
+            outputdata += i
         # Fill in end
 
         f.close()
@@ -55,7 +55,7 @@ def webServer(port=13331):
 
         # Close client socket
         # Fill in start
-        connectionSocket.close()
+    connectionSocket.close()
         # Fill in end
 
 
