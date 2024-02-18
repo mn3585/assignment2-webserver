@@ -20,7 +20,7 @@ def webServer(port=13331):
 
             with open(filename[1:], 'r', encoding='utf-8') as f:
                 # Prepare the HTTP response header
-                outputdata = 'HTTP/1.1 200 OK\nContent-Type: text/html; charset=UTF-8\r\n\r\n'.encode()
+                outputdata = 'HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=UTF-8\r\n\r\n'.encode()
 
                 for i in f:
                     outputdata += i
@@ -31,8 +31,7 @@ def webServer(port=13331):
             connectionSocket.close()
 
         except Exception as e:
-            header = 'HTTP/1.1 404 Not Found\nContent-Type: text/html; charset=UTF-8\r\n\r\n'.encode()
-            #message = header + b"<html><body><h1>404 Not Found</h1></body></html>"
+            header = 'HTTP/1.1 404 Not Found\r\nContent-Type: text/html; charset=UTF-8\r\n\r\n'.encode()
             connectionSocket.send(header)
             connectionSocket.close()
 
