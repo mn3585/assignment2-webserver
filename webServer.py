@@ -29,8 +29,8 @@ def webServer(port=13331):
 
                      # This variable can store the headers you want to send for any valid or invalid request.   What header should be sent for a response that is ok?
                      # Fill in start
-            #header = b"HTTP 1.1/ 200 OK\Content-Type: text/html; charset=UTF-8\r\n\r\n"
-            header = r"HTTP 1.1/ 200 OK\Content-Type: text/html; charset=UTF-8\r\n\r\n"
+            #header = b"HTTP 1.1/ 200 OK\Content-Type: text/html; charset=UTF-8\r\n"
+            header = r"HTTP 1.1/ 200 OK\Content-Type: text/html; charset=UTF-8\r\n"
             # Content-Type is an example on how to send a header as bytes. There are more!
             outputdata=b"Content-Type: text/html; charset=UTF-8\r\n"
 
@@ -57,7 +57,7 @@ def webServer(port=13331):
     # Send response message for invalid request due to the file not being found (404)
     # Remember the format you used in the try: block!
     # Fill in start
-            header = 'HTTP/1.1 404 Not Found\nContent-Type: text/html; charset=UTF-8\r\n\r\n'
+            header = 'HTTP/1.1 404 Not Found\nContent-Type: text/html; charset=UTF-8\r\n'
             connectionSocket.send(header.encode())
     # Fill in end
 
