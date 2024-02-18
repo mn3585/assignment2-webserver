@@ -21,7 +21,7 @@ def webServer(port=13331):
             with open(filename[1:], 'r') as f:
             #with open(filename[1:], 'r', encoding='utf-8') as f:
                 # Prepare the HTTP response header
-                outputdata = 'HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=UTF-8\r\nConnection:Keep-Alive\r\n\Server:RUI\r\n\r\n'.encode()
+                outputdata = 'HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=UTF-8\r\nConnection:Keep-Alive\r\nServer:RUI\r\n\r\n'.encode()
 
                 for i in f:
                     #outputdata += i
